@@ -1,0 +1,30 @@
+services:
+    ## docker-compose exec db psql --username=railsapp_user --dbname=railsapp_pass
+    db:
+        image: postgres:14
+        container_name: railsapp-db
+        command: postgres -c config_file=/etc/postgresql/postgresql.conf
+        ports:
+            - "${SQL_PORT}:5432"
+        volumes:
+            - ./postgres/conf:/etc/postgresql
+            - ./postgres/data:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_DB=${SQL_DATABASE}
+            - POSTGRES_USER=${SQL_USER}
+            - POSTGRES_PASSWORD=${SQL_PASS}
+        restart: always
+
+    ## docker-compose exec web bash
+    web:
+        build: ./rails/.
+        container_name: railsapp-web
+        command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+        volumes:
+            - ./rails:/myapp
+        env_file: .env
+        ports:
+            - "${WEB_PORT}:3000"
+        depends_on:
+            - db
+        restart: on-failure
