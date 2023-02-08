@@ -4,4 +4,7 @@ Rails.application.routes.draw do
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
     root "products#index"
+    get '/products_by_category', to: 'products#products_by_category'
+
 end
+

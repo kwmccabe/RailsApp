@@ -1,34 +1,37 @@
 <%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
+
+<% if product.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.collection_select :category_id, Category.order(:name),:id,:name  %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
 
+<div class="row">
+    <div class="col-12 mb-3">
+        <%= form.label :name, class: 'form-label' %>
+        <%= form.text_field :name, class: 'form-control' %>
+        <div id="nameHelp" class="form-text">Give me names.</div>
+    </div>
+    <div class="col-12 mb-3">
+        <%= form.label :quantity, class: 'form-label' %>
+        <%= form.number_field :quantity, class: 'form-control' %>
+    </div>
+    <div class="col-12 mb-3">
+        <%= form.label :category_id, class: 'form-label' %>
+        <%= form.collection_select :category_id, Category.order(:name), :id, :name, {}, {class: 'form-select'}  %>
+    </div>
+</div>
 
+<div class="row border-top">
+    <div class="col-12 mt-3 mb-3">
+        <%= form.submit class: 'btn btn-primary' %>
+    </div>
+</div>
+
+<% end %>

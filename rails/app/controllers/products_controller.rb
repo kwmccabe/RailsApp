@@ -1,14 +1,19 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
 
-  # GET /products or /products.json
-  def index
-    @products = Product.all
-  end
+    # GET /products_by_category.xml
+    def products_by_category
+        @categories = Category.all
+    end
 
-  # GET /products/1 or /products/1.json
-  def show
-  end
+    # GET /products[.json][.xml]
+    def index
+        @products = Product.order("name")
+    end
+
+    # GET /products/1[.json][.xml]
+    def show
+    end
 
   # GET /products/new
   def new

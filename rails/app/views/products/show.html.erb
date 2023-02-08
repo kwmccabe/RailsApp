@@ -1,19 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div id="item_edit_panel" class="card">
+    <div class="card-header">
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+<div class="row">
+    <div class="col">
+<h3 class="card-title text-nowrap">Product '<%= @product.id %>'</h3>
+    </div>
+</div>
 
-<p>
-  <strong>Quantity:</strong>
-  <%= @product.quantity %>
-</p>
+<% if notice %><p id="notice"><%= notice %></p><% end %>
 
-<p>
-  <strong>Category:</strong>
-  <%= @product.category.name %>
-</p>
+    </div> <!-- end class="card-header" -->
+    <div class="card-body">
+
+<div class="row">
+    <div class="col-12 col-sm-6 mb-2">
+        <span class="fs-6 fw-light mb-0">ID</span><br/>
+        <span class="fs-5"><%= @product.id %></span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-sm-6 mb-2">
+        <span class="fs-6 fw-light mb-0">Name</span><br/>
+        <span class="fs-5"><%= @product.name %></span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-sm-6 mb-2">
+        <span class="fs-6 fw-light mb-0">Quantity</span><br/>
+        <span class="fs-5"><%= @product.quantity %></span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-sm-6 mb-2">
+        <span class="fs-6 fw-light mb-0">Category</span><br/>
+        <span class="fs-5"><%= link_to @product.category.name, @product.category %></span>
+    </div>
+</div>
+
+    </div> <!-- end class="card-body" -->
+</div>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
