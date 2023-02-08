@@ -6,13 +6,17 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 </head>
 <body>
-    <p>
-        <%= link_to 'Products', products_path %>
-        <%= link_to 'Categories', categories_path %>
-    </p>
+<%= render "layouts/header" %>
 
+<div class="container-fluid">
 <%= yield %>
+</div>
+
+<%= render "layouts/footer" %>
 </body>
 </html>
+
+
