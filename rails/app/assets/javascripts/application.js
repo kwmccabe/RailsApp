@@ -14,3 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// https://github.com/twbs/bootstrap-rubygem/blob/main/README.md
+//= require popper
+//= require bootstrap
