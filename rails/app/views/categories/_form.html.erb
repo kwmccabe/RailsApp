@@ -1,22 +1,29 @@
 <%= form_with(model: category, local: true) do |form| %>
-  <% if category.errors.any? %>
+
+<% if category.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+        <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
 
-      <ul>
-      <% category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% category.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
     </div>
-  <% end %>
+<% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<div class="row">
+    <div class="col-12 mb-3">
+        <%= form.label :name, class: 'form-label' %>
+        <%= form.text_field :name, class: 'form-control' %>
+        <div id="nameHelp" class="form-text">Unique name.</div>
+    </div>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="row border-top">
+    <div class="col-12 mt-3 mb-3">
+        <%= form.submit class: 'btn btn-primary' %>
+    </div>
+</div>
+
 <% end %>

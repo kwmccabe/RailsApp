@@ -9,11 +9,12 @@
 Category.create!([
     {name: 'Book'},
     {name: 'DVD'},
-    {name: 'Blu Ray'}
+    {name: 'Blu Ray'},
+    {name: 'Misc'},
 ])
 
 Product.create!([
-    {name: 'Dom quixote de La Mancha', quantity: 12, category_id: Category.find_by_name('Book').id},
+    {name: 'Don Quixote', quantity: 12, category_id: Category.find_by_name('Book').id},
     {name: 'Hamlet', quantity: 3, category_id: Category.find_by_name('Book').id},
     {name: 'War and Peace', quantity: 7, category_id: Category.find_by_name('Book').id},
     {name: 'Moby Dick', quantity: 14, category_id: Category.find_by_name('Book').id},

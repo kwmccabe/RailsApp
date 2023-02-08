@@ -1,9 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div id="item_edit_panel" class="card">
+    <div class="card-header">
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<div class="row">
+    <div class="col">
+<h3 class="card-title text-nowrap">Category '<%= @category.id %>'</h3>
+    </div>
+</div>
+
+<% if notice %><p id="notice"><%= notice %></p><% end %>
+
+    </div> <!-- end class="card-header" -->
+    <div class="card-body">
+
+<div class="row">
+    <div class="col-12 col-sm-6 mb-2">
+        <span class="fs-6 fw-light mb-0">ID</span><br/>
+        <span class="fs-5"><%= @category.id %></span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-sm-6 mb-2">
+        <span class="fs-6 fw-light mb-0">Name</span><br/>
+        <span class="fs-5"><%= @category.name %></span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-sm-6 mb-2">
+        <span class="fs-6 fw-light mb-0">Products (<%= @category.products.count %>)</span><br/>
+        <span class="fs-5"><ul>
+            <% @category.products.each do |product| %>
+                <li><%= link_to product.name, product %></li>
+            <% end %>
+
+        </ul></span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-sm-6 mb-2">
+        <span class="fs-6 fw-light mb-0">products_count</span><br/>
+        <span class="fs-5"><%= @category.products_count %></span>
+    </div>
+</div>
+
+    </div> <!-- end class="card-body" -->
+</div>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

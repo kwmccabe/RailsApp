@@ -1,14 +1,29 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
 
-  # GET /categories or /categories.json
+  # GET /categories[.json][.xml]
   def index
-    @categories = Category.all
+    @categories = Category.order("name")
+    respond_to do |format|
+      format.html
+      format.json { render json: @categories }
+      format.xml  { render xml: @categories.as_json(
+          except: [:id, :created_at],
+          root: true,
+          include: { products: {only: [:name, :quantity]} },
+          ) }
+    end
   end
 
-  # GET /categories/1 or /categories/1.json
+  # GET /categories/1[.json][.xml]
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @category }
+      format.xml  { render xml: @category.as_json }
+    end
   end
+
 
   # GET /categories/new
   def new

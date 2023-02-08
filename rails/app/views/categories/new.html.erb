@@ -1,5 +1,18 @@
-<h1>New Category</h1>
+<div id="item_edit_panel" class="card">
+    <div class="card-header">
+
+<div class="row">
+    <div class="col">
+<h3 class="card-title text-nowrap">New Category</h3>
+    </div>
+</div>
+
+    </div> <!-- end class="card-header" -->
+    <div class="card-body">
 
 <%= render 'form', category: @category %>
+
+    </div> <!-- end class="card-body" -->
+</div>
 
 <%= link_to 'Back', categories_path %>
